@@ -104,21 +104,21 @@ const Home = () => {
 				<div className="col-12 ">
 					<input type="text "
 						//  onKeyDown={(e) => agregarTareas(e)} 
-						className="form-control border border-primary" placeholder="Nueva Tarea" value={tarea} onChange={(evento) => setTarea(evento.target.value)} />
+						className="form-control border border-success" placeholder="Nueva Tarea" value={tarea} onChange={(evento) => setTarea(evento.target.value)} />
 				</div>
 				<div className="col-12 mt-2">
-					<button type="submit" onClick={(evento) => agregarTareas(evento)} className="btn btn-primary mb-3">Agregar Tarea</button>
+					<button type="submit" onClick={(evento) => agregarTareas(evento)} className="btn btn-success mb-3">Agregar Tarea</button>
 				</div>
 			</form>
-			<ul className="list-group border-primary">
+			<ul className="list-group border-success">
 				{lista.map((item, index) => (
-					<li className="list-group-item border border-primary" key={index}>
+					<li className="list-group-item border border-success" key={index}>
 						{item.label}
 						<i onClick={() => borrar(item.id)} className="m-1 fa-solid fa-trash icono-oculto"></i>
 					</li>
 				))}
 			</ul>
-			<span className="text-primary">
+			<span className="text-success">
 				{(lista.length == 0) ? "No hay Tareas , Agregar Una " : ""}
 			</span>
 			<p></p>
