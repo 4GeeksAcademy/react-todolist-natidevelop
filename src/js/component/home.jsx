@@ -20,7 +20,6 @@ const Home = () => {
 		if (evento.key === "Enter") {
 			guardarTareas()
 			setTarea("")
-
 		}
 	}
 
@@ -29,13 +28,10 @@ const Home = () => {
 			const url = "https://playground.4geeks.com/todo/todos/nati"
 			const resp = await fetch(url, {
 				method: "POST",
-				headers: {
-					'Content-Type': 'application/json'
-				},
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
 					label: tarea,
 					is_done: false
-
 				})
 			})
 			if (resp.ok) {
@@ -45,13 +41,10 @@ const Home = () => {
 		} catch (error) {
 			console.log(error)
 			return false
-
 		}
 	}
 	const cargarTareas = async () => {
 		try {
-
-
 			const url = "https://playground.4geeks.com/todo/users/nati"
 			const resp = await fetch(url)
 			if (resp.status == 404) {
@@ -60,9 +53,7 @@ const Home = () => {
 			}
 			const data = await resp.json()
 			setLista(data.todos)
-
 			return true
-
 		} catch (error) {
 			console.error(error)
 			return false
@@ -74,7 +65,6 @@ const Home = () => {
 			const resp = await fetch("https://playground.4geeks.com/todo/users/nati", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" }
-
 			})
 			if (resp.status == 201) {
 				cargarTareas()
@@ -86,31 +76,24 @@ const Home = () => {
 	}
 
 	const borrar = async (id) => {
-		console.log(id)
+		// console.log(id)
 		try {
 			const resp = await fetch("https://playground.4geeks.com/todo/todos/" + id, {
 				method: "DELETE",
 				headers: { "Content-Type": "application/json" }
-
-
-
 			})
-			console.log(resp.status)
+			// console.log(resp.status)
 			if (resp.status == 204) {
 				cargarTareas()
 				return true
-
 			}
-
 		} catch (error) {
 			console.log(error)
 			return false
-
 		}
 	}
 
 	useEffect(() => {
-
 		cargarTareas()
 	}, [])
 
@@ -131,13 +114,13 @@ const Home = () => {
 				{lista.map((item, index) => (
 					<li className="list-group-item border border-primary" key={index}>
 						{item.label}
-						<i onClick={() => borrar(item.id)}
-							className="m-1 fa-solid fa-trash icono-oculto"></i>
+						<i onClick={() => borrar(item.id)} className="m-1 fa-solid fa-trash icono-oculto"></i>
 					</li>
 				))}
 			</ul>
-			<span className="text-primary
-			">{(lista.length == 0) ? "No hay Tareas , Agregar Una " : ""}</span>
+			<span className="text-primary">
+				{(lista.length == 0) ? "No hay Tareas , Agregar Una " : ""}
+			</span>
 			<p></p>
 			<span className="text-success">{lista.length} Items Left</span>
 		</div>
